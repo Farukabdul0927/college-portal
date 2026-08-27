@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Teacher Dashboard</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .header {
+            background: #4f46e5;
+            color: white;
+            padding: 20px 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .welcome h2 {
+            margin-top: 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            padding: 12px 20px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .logout {
+            background: #dc2626;
+        }
+
+        .students-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f1f1;
+        }
+
+        tr:hover {
+            background: #f8f8ff;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1>👨‍🏫 Teacher Portal</h1>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="welcome">
+
+            <h2>
+                Welcome, {{ teacher.name }} 👋
+            </h2>
+
+            <p>
+                <strong>Subject:</strong>
+                {{ teacher.subject }}
+            </p>
+
+            <p>
+                <strong>Username:</strong>
+                {{ teacher.username }}
+            </p>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <a href="/teacher-attendance" class="button">
+    📋 Attendance
+            </a>
+
+            <a href="#" class="button">
+                📝 Marks
+            </a>
+
+            <a href="/logout" class="button logout">
+                🚪 Logout
+            </a>
+
+        </div>
+
+
+        <div class="students-box">
+
+            <h2>👥 Student List</h2>
+
+            <p>
+                Total Students:
+                <strong>{{ students|length }}</strong>
+            </p>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>S.No</th>
+                        <th>Roll Number</th>
+                        <th>Student Name</th>
+                        <th>Class</th>
+                        <th>Year</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for student in students %}
+
+                    <tr>
+
+                        <td>
+                            {{ loop.index }}
+                        </td>
+
+                        <td>
+                            {{ student.roll_number }}
+                        </td>
+
+                        <td>
+                            {{ student.name }}
+                        </td>
+
+                        <td>
+                            {{ student.class_name }}
+                        </td>
+
+                        <td>
+                            {{ student.year }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Portal</title>
+
+    <!-- Professional Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #123c7a, #2563eb);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 38px;
+        }
+
+        .header h2 {
+            margin-top: 12px;
+            font-size: 23px;
+            font-weight: normal;
+        }
+
+        .student-info {
+            background: white;
+            width: 80%;
+            max-width: 750px;
+            margin: 25px auto;
+            padding: 22px;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+            text-align: center;
+        }
+
+        .student-info p {
+            margin: 9px;
+            font-size: 17px;
+        }
+
+        .cards {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto 50px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            min-height: 170px;
+            border-radius: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-decoration: none;
+            color: #1f2937;
+
+            box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.16);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+
+            border-radius: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 15px;
+        }
+
+        .icon-box i {
+            font-size: 32px;
+        }
+
+        .card-title {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        /* Individual icon styles */
+
+        .attendance .icon-box {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+
+        .timetable .icon-box {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+
+        .marks .icon-box {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .notices .icon-box {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .assignments .icon-box {
+            background: #fce7f3;
+            color: #db2777;
+        }
+
+        .results .icon-box {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .logout .icon-box {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .logout {
+            color: #dc2626;
+        }
+
+        @media (max-width: 700px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 450px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>🎓 College Portal</h1>
+        <h2>Welcome, {{ student.name }} 👋</h2>
+    </div>
+
+    <div class="student-info">
+        <p><strong>Roll Number:</strong> {{ student.roll_number }}</p>
+        <p><strong>Class:</strong> {{ student.class_name }}</p>
+        <p><strong>Username:</strong> {{ student.username }}</p>
+    </div>
+
+    <div class="cards">
+
+        <!-- Attendance -->
+        <a href="/attendance" class="card attendance">
+            <div class="icon-box">
+                <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <div class="card-title">Attendance</div>
+        </a>
+
+        <!-- Timetable -->
+        <a href="/timetable" class="card timetable">
+            <div class="icon-box">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <div class="card-title">Timetable</div>
+        </a>
+
+        <!-- Marks -->
+        <a href="/marks" class="card marks">
+            <div class="icon-box">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div class="card-title">Marks</div>
+        </a>
+
+        <!-- Notices -->
+        <a href="/notices" class="card notices">
+            <div class="icon-box">
+                <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <div class="card-title">Notices</div>
+        </a>
+
+        <!-- Assignments -->
+        <a href="/assignments" class="card assignments">
+            <div class="icon-box">
+                <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <div class="card-title">Assignments</div>
+        </a>
+
+        <!-- Results -->
+        <a href="/results" class="card results">
+            <div class="icon-box">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="card-title">Results</div>
+        </a>
+
+        <!-- Logout -->
+        <a href="/logout" class="card logout">
+            <div class="icon-box">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
+            <div class="card-title">Logout</div>
+        </a>
+
+    </div>
+
+</body>
+</html>

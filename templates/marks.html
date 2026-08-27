@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks</title>
+</head>
+
+<body>
+
+    <h1>📝 Student Marks</h1>
+
+    <h2>Welcome, {{ student.name }} 👋</h2>
+
+    <p>
+        <strong>Roll Number:</strong>
+        {{ student.roll_number }}
+    </p>
+
+    <p>
+        <strong>Class:</strong>
+        {{ student.class_name }}
+    </p>
+
+    <hr>
+
+    <h3>Subject Marks</h3>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Subject</th>
+            <th>Internal</th>
+            <th>External</th>
+            <th>Total</th>
+            <th>Grade</th>
+        </tr>
+
+        {% for record in marks_records %}
+
+        {% set total = record.internal + record.external %}
+
+        <tr>
+            <td>{{ record.subject }}</td>
+
+            <td>{{ record.internal }}</td>
+
+            <td>{{ record.external }}</td>
+
+            <td>{{ total }}</td>
+
+            <td>
+                {% if total >= 90 %}
+                    A+
+                {% elif total >= 80 %}
+                    A
+                {% elif total >= 70 %}
+                    B+
+                {% elif total >= 60 %}
+                    B
+                {% elif total >= 50 %}
+                    C
+                {% else %}
+                    F
+                {% endif %}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/dashboard">
+        <button>⬅ Back to Dashboard</button>
+    </a>
+
+</body>
+</html>
